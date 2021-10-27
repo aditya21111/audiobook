@@ -16,11 +16,12 @@ engine.setProperty('rate', 165)
 engine.setProperty('volume',200 )
 engine.setProperty('voices' , voices[0].id)
 
+# speaks out the read pdf
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
-
+# reads the pdf
 def PDFreader(file_path):
     # Creating a pdf file object.
     pdf = open(file_path, "rb")
