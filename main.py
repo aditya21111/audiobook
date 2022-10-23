@@ -27,7 +27,12 @@ def PDFreader(file_path):
     pdf = open(file_path, "rb")
     # Creating pdf reader object.
     pdf_reader = PyPDF2.PdfFileReader(pdf)
-    # Checking total number of pages in a pdf file.
+    
+    # getting basic info
+    docInfo = pdf_reader.documentInfo
+    print(f"Document was created by {docInfo["/creator"]}.")
+
+# Checking total number of pages in a pdf file.
     total_pages = pdf_reader.numPages
     #loop for reading the file from 4th page to last
     for page_no in range(4,total_pages):
