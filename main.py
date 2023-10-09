@@ -14,15 +14,16 @@ engine.getProperty('volume')
 engine.setProperty('rate', 165)
 #this changes the volume level 
 engine.setProperty('volume',200 )
-engine.setProperty('voices' , voices[0].id)
+
 
 # speaks out the read pdf
-def speak(audio):
+def speak(audio, voice):
+    engine.setProperty('voices' , voices[voice].id || voices[0].id)
     engine.say(audio)
     engine.runAndWait()
 
 # reads the pdf
-def PDFreader(file_path):
+def PDFreader(file_path, voice):
     # Creating a pdf file object.
     pdf = open(file_path, "rb")
     # Creating pdf reader object.
@@ -34,11 +35,12 @@ def PDFreader(file_path):
         page=pdf_reader.getPage(page_no)
         text=page.extractText()
         print(text)
-        speak(text)
+        speak(text, voice)
     pdf.close()
-file_path=input("Enter the full path of file : ")  
+file_path=input("Enter the full path of file : ")
+voice = input("Press 0 for female and 1 for male : ")
 if file_path.endswith('.pdf'):
-    PDFreader(file_path)
+    PDFreader(file_path, voice)
 
 else:
     print("This file type is unsupportable")
